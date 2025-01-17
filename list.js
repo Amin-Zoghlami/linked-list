@@ -32,6 +32,7 @@ export default class LinkedList {
     let i = 0;
     let currNode = this.#head;
     while (currNode !== null) {
+      currNode = currNode.nextNode;
       i++;
     }
 
@@ -91,6 +92,8 @@ export default class LinkedList {
       if (currNode.value === value) {
         return true;
       }
+
+      currNode = currNode.nextNode;
     }
 
     return false;
@@ -104,6 +107,8 @@ export default class LinkedList {
       if (currNode.value === value) {
         return i;
       }
+
+      currNode = currNode.nextNode;
       i++;
     }
 
@@ -115,7 +120,9 @@ export default class LinkedList {
     let string = "";
 
     while (currNode !== null) {
-      string.concat(`( ${currNode.value} ) -> `);
+      string = string.concat(`( ${currNode.value} ) -> `);
+
+      currNode = currNode.nextNode;
     }
 
     return string.concat("null");
