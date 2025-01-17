@@ -127,4 +127,52 @@ export default class LinkedList {
 
     return string.concat("null");
   }
+
+  insertAt(value, index) {
+    const newNode = new Node();
+    newNode.value = value;
+
+    if (index === 0) {
+      newNode.nextNode = this.#head;
+      this.#head = newNode;
+      return;
+    }
+
+    let currNode = this.#head;
+    let i = 0;
+
+    while (currNode !== null) {
+      if (i === index - 1) {
+        newNode.nextNode = currNode.nextNode;
+        currNode.nextNode = newNode;
+        return;
+      }
+
+      currNode = currNode.nextNode;
+      i++;
+    }
+  }
+
+  removeAt(index) {
+    if (this.#head === null) {
+      return;
+    }
+
+    if (index === 0) {
+      this.#head = this.#head.nextNode;
+    }
+
+    let currNode = this.#head;
+    let i = 0;
+
+    while (currNode.nextNode !== null) {
+      if (i === index - 1) {
+        currNode.nextNode = currNode.nextNode.nextNode;
+        return;
+      }
+
+      currNode = currNode.nextNode;
+      i++;
+    }
+  }
 }
